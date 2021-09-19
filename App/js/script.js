@@ -6,8 +6,12 @@ window.onload = () => {
     var emblaFontSelector = EmblaCarousel(emblaFontSelectorNode , options)
     let slideInView = embla.slidesInView();
     let fontSelectorSlidesInView = emblaFontSelector.slideNodes();
-    let currentIndex = 0;
-  
+    let current = "embla";
+    //onclick on input clear the value
+    $("#fDisplay").on("click",function(){
+      if($("#fDisplay").val() == "Start Typing")
+      $("#fDisplay").val("");
+    })
     // on loading the screen apply default fonts and color to the text
     $("#fDisplay").css("font-family" , $(".fontCenter svg").attr("data-font-style"));
     $("#fDisplay").css("color" , $(".center button").css('color'));
@@ -23,7 +27,7 @@ window.onload = () => {
           $(".embla__slide:eq("+slideInView[i]+")").addClass("center");
           let textColor = $(".center button").css('color');
           let color = "drop-shadow(0 0 2.75rem "+$(".center button").css('color')+")";
-          let textShadow = "0px 1px 10px "+textColor;
+          let textShadow = "0px 1px 10px "+textColor+",0px 1px 10px "+textColor+",0px 1px 10px "+textColor+",0px 1px 19px "+textColor;
           $(".fontCenter .st0").css({"fill":textColor, "filter":color});
           $("#fDisplay").css("font-family" , $(".fontCenter svg").attr("data-font-style"));
           $("#fDisplay").css("color" , $(".center button").css('color'));
@@ -89,7 +93,7 @@ window.onload = () => {
             top = -30;
             color = "drop-shadow(0 0 2.75rem "+$(".center button").css('color')+")";
             textColor = $(".center button").css('color');
-            textShadow = "0px 1px 10px "+textColor;
+            textShadow = "0px 1px 10px "+textColor+",0px 1px 10px "+textColor+",0px 1px 10px "+textColor+",0px 1px 19px "+textColor;
           }
           else{
             opacity = 0.2;
@@ -107,24 +111,7 @@ window.onload = () => {
         }
       }
     });
-  
-  // function control scroll using arrow keys
-  document.onkeydown = function(e) {
-    switch(e.which) {
-        case 37: // left
-        embla.scrollPrev();
-        break;
-  
-        case 39: // right
-        embla.scrollNext();
-        break;
-  
-        default: return; // exit this handler for other keys
-    }
-    e.preventDefault(); // prevent the default action (scroll / move caret)
-  };
-  
-  var selector = ".section";
+    var selector = ".section";
   
     var $slides = $(selector);
   
@@ -146,6 +133,78 @@ window.onload = () => {
       var rect = $elem[0].getBoundingClientRect();
       return rect.top >= 0;
     };
+  // function control scroll using arrow keys
+  document.onkeydown = function(e) {
+    
+    if(e.which == 40 || e.which == 38){
+      var $currentSlide = $($slides[currentSlide]);
+
+      if (isAnimating) {
+        e.preventDefault();
+        return;
+      }
+
+
+      if (e.which ==40) {
+        // next
+        if (currentSlide + 1 >= $slides.length) return;
+        if (!bottomIsReached($currentSlide)) return;
+        e.preventDefault();
+        currentSlide++;
+        var $slide = $($slides[currentSlide]);
+        var offsetTop = $slide.offset().top;
+        isAnimating = true;
+        $("html, body").animate(
+          {
+            scrollTop: offsetTop
+          },
+          1000,
+          stopAnimation
+        );
+      } else if(e.which == 38) {
+        // back
+        if (currentSlide - 1 < 0) return;
+        if (!topIsReached($currentSlide)) return;
+        e.preventDefault();
+        currentSlide--;
+        var $slide = $($slides[currentSlide]);
+        var offsetTop = $slide.offset().top;
+        isAnimating = true;
+        $("html, body").animate(
+          {
+            scrollTop: offsetTop
+          },
+          1000,
+          stopAnimation
+        );
+      }
+      current =  $slide.children("div:eq(1)").attr("class").split(" ")[0];
+    }
+    switch(e.which) {
+        case 37: // left
+        if(current=="embla"){
+          embla.scrollPrev();
+        }
+        else if(current == "embla_font_selector"){
+          emblaFontSelector.scrollPrev();
+        }
+        break;
+  
+        case 39: // right
+        if(current=="embla"){
+          embla.scrollNext();
+        }
+        else if(current == "embla_font_selector"){
+          emblaFontSelector.scrollNext();
+        }
+        break;
+  
+        default: return; // exit this handler for other keys
+    } 
+    e.preventDefault(); // prevent the default action (scroll / move caret)
+  };
+  
+
   
     document.addEventListener(
       "wheel",
@@ -192,10 +251,12 @@ window.onload = () => {
             stopAnimation
           );
         }
+        current =  $slide.children("div:eq(1)").attr("class").split(" ")[0];
       },
       { passive: false }
     );
-  
+
+
   
     // font resizer js logic //
     const range = document.getElementById('range');
@@ -224,15 +285,16 @@ window.onload = () => {
       // Calculate the left value
       const left = value * (num_width / max) - num_label_width / 2 + scale(value, min, max, 10, -10);
       
-      label.style.left = `${left+30}px`;
-      label.innerHTML = value+" px";
-        $("#fDisplay").css("font-size" , value);
+      label.style.left = `${left-10}px`;
+      label.innerHTML = value+" cm";
+        $("input").css("font-size" , value);
     });
     
     const scale = (num, in_min, in_max, out_min, out_max) => {
       return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
     }
     // end //
+    
   }
   
   

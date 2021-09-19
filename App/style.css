@@ -1,37 +1,20 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,500);
-/*****************************************
-*  --------------------------------------*
-*  Vars                                  *
-*  --------------------------------------*
-*****************************************/
-/*****************************************
-*  --------------------------------------*
-*  General                               *
-*  --------------------------------------*
-*****************************************/
 body {
-  background-color: #222222;
+  background-color: #222;
   background: repeating-linear-gradient(
       45deg,
-      #2b2b2b 0%,
+      #2b2b2b 0,
       #2b2b2b 10%,
-      #222222 0%,
-      #222222 50%
+      #222 0,
+      #222 50%
     )
-    0 / 15px 15px;
+    0/15px 15px;
 }
-
 h2 {
   display: inline;
-  position: absolute;
-  margin-left: 1000px;
-  background-color: #34495e;
-  margin-top: 470px;
-
-  font-size: 80px;
-  font-family: "Raleway", sans-serif;
+  font-family: Raleway, sans-serif;
   letter-spacing: 3px;
-  text-transform: uppercase;
+  color: #ffffff;
 }
 .text-style {
   writing-mode: vertical-lr;
@@ -40,21 +23,72 @@ h2 {
   letter-spacing: 24px;
   font-weight: 600;
 }
-
 li {
   text-align: center;
 }
-
-/*****************************************
-*  --------------------------------------*
-*  Slick                                 *
-*  --------------------------------------*
-*****************************************/
-
+@font-face {
+  font-family: AudreySans;
+  src: url(fonts/AudreySansRegular.otf) format("truetype");
+}
+@font-face {
+  font-family: Beon;
+  src: url(fonts/Beon.otf) format("truetype");
+}
+@font-face {
+  font-family: BristolSignature;
+  src: url(fonts/BristolSignature.otf) format("truetype");
+}
+@font-face {
+  font-family: CosmopolitanSansLight;
+  src: url(fonts/CosmopolitanSansLight.otf) format("truetype");
+}
+@font-face {
+  font-family: CosmopolitanScriptLight;
+  src: url(fonts/CosmopolitanScriptLight.otf) format("truetype");
+}
+@font-face {
+  font-family: CrystalSky;
+  src: url(fonts/CrystalSky.otf) format("truetype");
+}
+@font-face {
+  font-family: DreamCatchersSan;
+  src: url(fonts/DreamCatchersSan.otf) format("truetype");
+}
+@font-face {
+  font-family: MarqueeMoon;
+  src: url(fonts/MarqueeMoon.otf) format("truetype");
+}
+@font-face {
+  font-family: Qulliness;
+  src: url(fonts/Qulliness.otf) format("truetype");
+}
+@font-face {
+  font-family: Rodagear;
+  src: url(fonts/Rodagear.otf) format("truetype");
+}
+@font-face {
+  font-family: SaturdayChampagne-Regular;
+  src: url(fonts/SaturdayChampagne-Regular.otf) format("truetype");
+}
+@font-face {
+  font-family: Scarlette;
+  src: url(fonts/Scarlette.ttf) format("truetype");
+}
+@font-face {
+  font-family: StarsRabitScript;
+  src: url(fonts/StarsRabitScript.otf) format("truetype");
+}
+@font-face {
+  font-family: Vontage;
+  src: url(fonts/Vontage.otf) format("truetype");
+}
+@font-face {
+  font-family: WildySign;
+  src: url(fonts/WildySign.otf) format("truetype");
+}
 .color-item {
   margin-top: 20px;
 }
-
 .slick-next {
   right: -89px !important;
 }
@@ -68,22 +102,14 @@ li {
   transition: all 0.7s ease-in-out;
   transform: scale(1.19);
 }
-
-/* .slide:not(.slick-active) {
-  cursor: pointer;
-} */
-
 .pagination {
   text-align: center;
-
-  font-family: "Raleway", sans-serif;
+  font-family: Raleway, sans-serif;
   font-size: 1.2rem;
 }
-
 .cl-coolwhite {
   background-color: #fff;
 }
-
 .cl-red {
   background-color: #fd0847;
 }
@@ -117,71 +143,57 @@ li {
 .cl-gold {
   background-color: #f88a0a;
 }
-
 body.coolwhite {
   background-color: #7dc3f0;
   color: #7dc3f0;
 }
-
 body.red {
   background-color: #fd0847;
   color: #fd0847;
 }
-
 body.hotpink {
   background-color: #f602ee;
   color: #f602ee;
 }
-
 body.babypink {
   background-color: #fe7adc;
   color: #fe7adc;
 }
-
 body.purple {
   background-color: #9200f1;
   color: #9200f1;
 }
-
 body.blue {
   background-color: #054bec;
   color: #054bec;
 }
-
 body.iceblue {
   background-color: #02f5f2;
   color: #02f5f2;
 }
-
 body.green {
   background-color: #02ef38;
   color: #02ef38;
 }
-
 body.white {
   background-color: #faeddf;
   color: #faeddf;
 }
-
 body.yellow {
   background-color: #fdfd4a;
   color: #fdfd4a;
 }
-
 body.orange {
   background-color: #f5b034;
   color: #f5b034;
 }
-
 body.gold {
   background-color: #f88a0a;
   color: #f88a0a;
 }
-
 li {
   list-style-type: none;
 }
-
 .btn-1 {
   border: none;
   background-color: #f602ee;
@@ -190,16 +202,13 @@ li {
 .btn-1:hover {
   box-shadow: 0 0 10px #ef97e8, 0 0 20px #ef97e8, 0 0 50px #fff inset;
 }
-
 button {
-  color: black;
+  color: #000;
   width: 50px;
   height: 200px;
-
-  font-family: "Lato", sans-serif;
+  font-family: Lato, sans-serif;
   font-weight: 500;
-  background: transparent;
-
+  background: 0 0;
   margin-top: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -208,92 +217,78 @@ button {
   border-radius: 100px;
   margin: 10px;
 }
-
 .btn1 {
   border: 5px solid #fff;
-  box-shadow: 0 0px #7dc3f0, 0 0 20px #7dc3f0, 0 0 40px #7dc3f0;
+  box-shadow: 0 0 #7dc3f0, 0 0 20px #7dc3f0, 0 0 40px #7dc3f0;
   color: #7dc3f0;
 }
-
 .btn2 {
   border: 5px solid #fd0847;
-  box-shadow: 0 0px #fd0847, 0 0 20px #fd0847, 0 0 40px #fd0847;
+  box-shadow: 0 0 #fd0847, 0 0 20px #fd0847, 0 0 40px #fd0847;
   color: #fd0847;
 }
-
 .btn3 {
   border: 5px solid #f602ee;
-  box-shadow: 0 0px #f602ee, 0 0 20px #f602ee, 0 0 40px #f602ee;
+  box-shadow: 0 0 #f602ee, 0 0 20px #f602ee, 0 0 40px #f602ee;
   color: #f602ee;
 }
-
 .btn4 {
   border: 5px solid #fe7adc;
-  box-shadow: 0 0px #fe7adc, 0 0 20px #fe7adc, 0 0 40px #fe7adc;
+  box-shadow: 0 0 #fe7adc, 0 0 20px #fe7adc, 0 0 40px #fe7adc;
   color: #fe7adc;
 }
-
 .btn5 {
   border: 5px solid #9200f1;
-  box-shadow: 0 0px #9200f1, 0 0 20px #9200f1, 0 0 40px #9200f1;
+  box-shadow: 0 0 #9200f1, 0 0 20px #9200f1, 0 0 40px #9200f1;
   color: #9200f1;
 }
-
 .btn6 {
   border: 5px solid #054bec;
-  box-shadow: 0 0px #054bec, 0 0 20px #054bec, 0 0 40px #054bec;
+  box-shadow: 0 0 #054bec, 0 0 20px #054bec, 0 0 40px #054bec;
   color: #054bec;
 }
-
 .btn7 {
   border: 5px solid #02f5f2;
-  box-shadow: 0 0px #02f5f2, 0 0 20px #02f5f2, 0 0 40px #02f5f2;
+  box-shadow: 0 0 #02f5f2, 0 0 20px #02f5f2, 0 0 40px #02f5f2;
   color: #02f5f2;
 }
-
 .btn8 {
   border: 5px solid #02ef38;
-  box-shadow: 0 0px #02ef38, 0 0 20px #02ef38, 0 0 40px #02ef38;
+  box-shadow: 0 0 #02ef38, 0 0 20px #02ef38, 0 0 40px #02ef38;
   color: #02ef38;
 }
-
 .btn9 {
   border: 5px solid #faeddf;
-  box-shadow: 0 0px #faeddf, 0 0 20px #faeddf, 0 0 40px #faeddf;
+  box-shadow: 0 0 #faeddf, 0 0 20px #faeddf, 0 0 40px #faeddf;
   color: #faeddf;
 }
-
 .btn10 {
   border: 5px solid #fdfd4a;
-  box-shadow: 0 0px #fdfd4a, 0 0 20px #fdfd4a, 0 0 40px #fdfd4a;
+  box-shadow: 0 0 #fdfd4a, 0 0 20px #fdfd4a, 0 0 40px #fdfd4a;
   color: #fdfd4a;
 }
-
 .btn11 {
   border: 5px solid #f5b034;
-  box-shadow: 0 0px #f5b034, 0 0 20px #f5b034, 0 0 40px #f5b034;
+  box-shadow: 0 0 #f5b034, 0 0 20px #f5b034, 0 0 40px #f5b034;
   color: #f5b034;
 }
-
 .btn12 {
   border: 5px solid #f88a0a;
-  box-shadow: 0 0px #f88a0a, 0 0 20px #f88a0a, 0 0 40px #f88a0a;
+  box-shadow: 0 0 #f88a0a, 0 0 20px #f88a0a, 0 0 40px #f88a0a;
   color: #f88a0a;
 }
-
 .btn-3 {
   border: none;
   background-color: #fe7adc;
   box-shadow: 0 0 10px #ef97e8;
 }
 .btn-3:hover {
-  box-shadow: 0 0 10px white, 0 0 20px white, 0 0 50px #fff inset;
+  box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 50px #fff inset;
 }
 .dock-container {
   max-width: 1122px;
   margin: 0 auto;
 }
-
 .embla {
   padding-top: 200px;
   overflow: hidden;
@@ -305,7 +300,6 @@ button {
   position: relative;
   flex: 0 0 10%;
 }
-
 .embla.is-draggable {
   max-width: 1200px;
   margin: 0 auto;
@@ -315,62 +309,51 @@ button {
   visibility: collapse;
 }
 .embla__slide:nth-child(1) {
-  transform: translate(0px, -75px);
+  transform: translate(0, -75px);
   opacity: 1;
 }
-
 .embla__slide:nth-child(2) {
-  transform: translate(0px, -50px);
+  transform: translate(0, -50px);
   opacity: 0.2;
 }
-
 .embla__slide:nth-child(3) {
-  transform: translate(0px, -25px);
+  transform: translate(0, -25px);
   opacity: 0.2;
 }
-
 .embla__slide:nth-child(4) {
-  transform: translate(0px, 0px);
+  transform: translate(0, 0);
   opacity: 0.2;
 }
-
 .embla__slide:nth-child(5) {
-  transform: translate(0px, 25px);
+  transform: translate(0, 25px);
   opacity: 0.2;
 }
-
 .embla__slide:nth-child(6) {
-  transform: translate(0px, 50px);
+  transform: translate(0, 50px);
   opacity: 0.2;
 }
-
 .embla__slide:nth-child(7) {
-  transform: translate(0px, 75px);
+  transform: translate(0, 75px);
   opacity: 0.2;
 }
-
 .embla__slide:nth-child(8) {
-  transform: translate(0px, 50px);
+  transform: translate(0, 50px);
   opacity: 0.2;
 }
-
 .embla__slide:nth-child(9) {
-  transform: translate(0px, 25px);
+  transform: translate(0, 25px);
   opacity: 0.2;
 }
-
 .embla__slide:nth-child(10) {
-  transform: translate(0px, 0px);
+  transform: translate(0, 0);
   opacity: 0.2;
 }
-
 .embla__slide:nth-child(11) {
-  transform: translate(0px, -25px);
+  transform: translate(0, -25px);
   opacity: 0.2;
 }
-
 .embla__slide:nth-child(12) {
-  transform: translate(0px, -50px);
+  transform: translate(0, -50px);
   opacity: 0.2;
 }
 .color-title {
@@ -386,7 +369,7 @@ button {
   color: #fff;
   border-radius: 100px;
   white-space: nowrap;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 1.2em;
   text-align: center;
   font-family: Helvetica Neue, Helvetica, Arial;
@@ -403,10 +386,6 @@ button {
   border-right-color: transparent;
   transform: translateX(-50%);
 }
-
-/*
-Font Selector CSS Start
-*/
 .fontlabel {
   width: 200px;
   position: relative;
@@ -433,7 +412,6 @@ Font Selector CSS Start
 .font-hide {
   display: none;
 }
-
 .font-color-title {
   position: absolute;
   height: 60px;
@@ -445,7 +423,7 @@ Font Selector CSS Start
   color: #fff;
   border-radius: 100px;
   white-space: nowrap;
-  font-weight: bold;
+  font-weight: 700;
   text-align: center;
   left: 50%;
 }
@@ -460,71 +438,57 @@ Font Selector CSS Start
   border-right-color: transparent;
   transform: translateX(-50%);
 }
-
 .embla_font-slider:nth-child(1) {
-  transform: translate(0px, -150px);
+  transform: translate(0, -150px);
   opacity: 1;
   top: -30px;
 }
-
 .embla_font-slider:nth-child(2) {
-  transform: translate(0px, -100px);
+  transform: translate(0, -100px);
   opacity: 0.2;
 }
-
 .embla_font-slider:nth-child(3) {
-  transform: translate(0px, 0px);
+  transform: translate(0, 0);
   opacity: 0.2;
 }
-
 .embla_font-slider:nth-child(4) {
-  transform: translate(0px, 50px);
+  transform: translate(0, 50px);
   opacity: 0.2;
 }
-
 .embla_font-slider:nth-child(5) {
   opacity: 0.2;
 }
-
 .embla_font-slider:nth-child(6) {
   opacity: 0.2;
 }
-
 .embla_font-slider:nth-child(7) {
   opacity: 0.2;
 }
-
 .embla_font-slider:nth-child(8) {
   opacity: 0.2;
 }
-
 .embla_font-slider:nth-child(9) {
   opacity: 0.2;
 }
-
 .embla_font-slider:nth-child(10) {
   opacity: 0.2;
 }
-
 .embla_font-slider:nth-child(11) {
   opacity: 0.2;
 }
-
 .embla_font-slider:nth-child(12) {
   opacity: 0.2;
 }
-
 .embla_font-slider:nth-child(13) {
-  transform: translate(0px, 0px);
+  transform: translate(0, 0);
   opacity: 0.2;
 }
-
 .embla_font-slider:nth-child(14) {
-  transform: translate(0px, -50px);
+  transform: translate(0, -50px);
   opacity: 0.2;
 }
 .embla_font-slider:nth-child(15) {
-  transform: translate(0px, -100px);
+  transform: translate(0, -100px);
   opacity: 0.2;
 }
 #fontDisplay {
@@ -541,131 +505,47 @@ Font Selector CSS Start
   top: 0;
   z-index: 9999;
   text-align: center;
-  background-color: #222222;
+  background-color: #222;
   position: fixed;
 }
 input {
-  width: max-content;
+  width: 100%;
   padding: 0 20px;
   text-align: center;
-  background: none;
-  outline: none;
+  background: 0 0;
+  outline: 0;
   border: none;
-  caret-color: white;
-  color: white;
+  caret-color: #fff;
+  color: #fff;
 }
-
 input,
-input::-webkit-input-placeholder {
+::-webkit-input-placeholder {
   font-size: 40px;
   line-height: 3;
 }
-/* Hide scrollbar for Chrome, Safari and Opera */
 body::-webkit-scrollbar {
   display: none;
 }
-
-/* Hide scrollbar for IE, Edge and Firefox */
 body {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 section {
   height: 80vh;
   padding-top: 40vh;
 }
-
-/* font families defination for different fonts */
-@font-face {
-  font-family: "AudreySans";
-  src: url("fonts/AudreySansRegular.otf") format("truetype"); /* Safari, Android, iOS */
-}
-
-@font-face {
-  font-family: "Beon";
-  src: url("fonts/Beon.otf") format("truetype"); /* Safari, Android, iOS */
-}
-
-@font-face {
-  font-family: "BristolSignature";
-  src: url("fonts/BristolSignature.otf") format("truetype"); /* Safari, Android, iOS */
-}
-
-@font-face {
-  font-family: "CosmopolitanSansLight";
-  src: url("fonts/CosmopolitanSansLight.otf") format("truetype"); /* Safari, Android, iOS */
-}
-
-@font-face {
-  font-family: "CosmopolitanScriptLight";
-  src: url("fonts/CosmopolitanScriptLight.otf") format("truetype"); /* Safari, Android, iOS */
-}
-
-@font-face {
-  font-family: "CrystalSky";
-  src: url("fonts/CrystalSky.otf") format("truetype"); /* Safari, Android, iOS */
-}
-
-@font-face {
-  font-family: "DreamCatchersSan";
-  src: url("fonts/DreamCatchersSan.otf") format("truetype"); /* Safari, Android, iOS */
-}
-
-@font-face {
-  font-family: "MarqueeMoon";
-  src: url("fonts/MarqueeMoon.otf") format("truetype"); /* Safari, Android, iOS */
-}
-
-@font-face {
-  font-family: "Qulliness";
-  src: url("fonts/Qulliness.otf") format("truetype"); /* Safari, Android, iOS */
-}
-
-@font-face {
-  font-family: "Rodagear";
-  src: url("fonts/Rodagear.otf") format("truetype"); /* Safari, Android, iOS */
-}
-
-@font-face {
-  font-family: "SaturdayChampagne-Regular";
-  src: url("fonts/SaturdayChampagne-Regular.otf") format("truetype"); /* Safari, Android, iOS */
-}
-
-@font-face {
-  font-family: "Scarlette";
-  src: url("fonts/Scarlette.ttf") format("truetype"); /* Safari, Android, iOS */
-}
-
-@font-face {
-  font-family: "StarsRabitScript";
-  src: url("fonts/StarsRabitScript.otf") format("truetype"); /* Safari, Android, iOS */
-}
-
-@font-face {
-  font-family: "Vontage";
-  src: url("fonts/Vontage.otf") format("truetype"); /* Safari, Android, iOS */
-}
-
-@font-face {
-  font-family: "WildySign";
-  src: url("fonts/WildySign.otf") format("truetype"); /* Safari, Android, iOS */
-}
-
-/*Font Sizer CSS and Styling*/
 .range-container {
   position: relative;
-  margin: 130px 0px 50px 0px;
+  margin: 130px 0 50px 0;
   height: 40vh;
   width: 50%;
 }
-
 input[type="range"] {
   width: 100%;
   margin: 18px 0;
   -webkit-appearance: none;
-  padding: 0px;
+  padding: 0;
 }
-
 input[type="range"] + label {
   position: absolute;
   height: 18px;
@@ -673,87 +553,84 @@ input[type="range"] + label {
   min-width: 32px;
   padding: 18px 20px;
   transform: translate(-50%, -100%);
-  background: rgb(56, 60, 66);
-  color: rgb(255, 255, 255);
+  background: #383c42;
+  color: #fff;
   border-radius: 100px;
   font-family: sans-serif;
   font-size: 18px;
   white-space: nowrap;
-  font-weight: bold;
+  font-weight: 700;
   text-align: center;
   width: max-content;
-  left: 145px;
+  left: 100px;
   width: 65px;
 }
-
 input[type="range"]:active {
-  outline: none;
+  outline: 0;
 }
-
 input[type="range"]::-webkit-slider-runnable-track {
   animate: 0.2s;
-  background-color: white;
+  background-color: #fff;
   border-radius: 4px;
   cursor: pointer;
   width: 100%;
   height: 7.5px;
 }
-
 input[type="range"]::-webkit-slider-thumb {
-  background: rgb(58, 57, 57);
+  background: #3a3939;
   border-radius: 50%;
-  border: 1px solid white;
+  border: 1px solid #fff;
   cursor: pointer;
   height: 20px;
   width: 20px;
   margin-top: -7px;
   -webkit-appearance: none;
 }
-
 input[type="range"]:active::-webkit-slider-runnable-track {
   opacity: 0.8;
 }
 input[type="range"]::-moz-range-track {
   animate: 0.2s;
-  background-color: white;
+  background-color: #fff;
   border-radius: 4px;
   cursor: pointer;
   width: 100%;
   height: 7.5px;
 }
 input[type="range"]::-moz-range-thumb {
-  background: rgb(58, 57, 57);
+  background: #3a3939;
   border-radius: 50%;
-  border: 1px solid white;
+  border: 1px solid #fff;
   cursor: pointer;
   height: 20px;
   width: 20px;
 }
 input[type="range"]::-ms-track {
   animate: 0.2s;
-  background-color: white;
+  background-color: #fff;
   border-radius: 4px;
   cursor: pointer;
   width: 100%;
   height: 7.5px;
 }
 input[type="range"]::-ms-thumb {
-  background: rgb(58, 57, 57);
+  background: #3a3939;
   border-radius: 50%;
-  border: 1px solid white;
+  border: 1px solid #fff;
   cursor: pointer;
   height: 20px;
   width: 20px;
   margin: 0;
   box-sizing: border-box;
 }
-
 input[type="range"]:active::-ms-fill-lower {
-  background: white;
+  background: #fff;
 }
-
 input[type="range"]:active::-ms-fill-upper {
-  background: white;
+  background: #fff;
 }
 
-/*End*/
+.section1-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
