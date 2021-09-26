@@ -7,6 +7,14 @@ window.onload = () => {
     let slideInView = embla.slidesInView();
     let fontSelectorSlidesInView = emblaFontSelector.slideNodes();
     let current = "embla";
+    const rangeContainerClass = "range-container";
+    let style = document.querySelector('[data="range-color"]');
+
+    //on screen load 
+    $('html,body').animate({
+      scrollTop: $(".section .section1-title").parent().offset().top},
+      'slow');
+
     //onclick on input clear the value
     $("#fDisplay").on("click",function(){
       if($("#fDisplay").val() == "Start Typing")
@@ -32,7 +40,7 @@ window.onload = () => {
           $("#fDisplay").css("font-family" , $(".fontCenter svg").attr("data-font-style"));
           $("#fDisplay").css("color" , $(".center button").css('color'));
           $("#fDisplay").css("text-shadow" , textShadow);
-  
+          style.innerHTML = "input[type='range']::-webkit-slider-thumb { background : "+$(".center button").css('color') +"!important ; box-shadow : "+$(".center button").css('box-shadow')+" !important; }";
         }
         else{
           $(".embla__slide:eq("+slideInView[i]+")").removeClass("center");
@@ -138,7 +146,7 @@ window.onload = () => {
     
     if(e.which == 40 || e.which == 38){
       var $currentSlide = $($slides[currentSlide]);
-
+      console.log("Current" , $currentSlide);
       if (isAnimating) {
         e.preventDefault();
         return;
@@ -179,6 +187,17 @@ window.onload = () => {
         );
       }
       current =  $slide.children("div:eq(1)").attr("class").split(" ")[0];
+      if(current == rangeContainerClass){
+        $("#fontDisplay").css("height" , "65vh");
+        $("#fontDisplay").prepend("<div style='top: 50;position:fixed;' class='section1-title'><h2>What size would you like the sign to be?</h2></div>");
+        $(".section .range-container").parent().css("height","45vh");
+        $("#fDisplay").prop("readonly",true);
+      }
+      else{
+        $("#fontDisplay").css("height" , "35vh");
+        $("#fontDisplay .section1-title").remove();
+        $("#fDisplay").prop("readonly",false);
+      }
     }
     switch(e.which) {
         case 37: // left
@@ -252,6 +271,17 @@ window.onload = () => {
           );
         }
         current =  $slide.children("div:eq(1)").attr("class").split(" ")[0];
+        if(current == rangeContainerClass){
+          $("#fontDisplay").css("height" , "65vh");
+          $("#fontDisplay").prepend("<div style='top: 50;position:fixed;' class='section1-title'><h2>What size would you like the sign to be?</h2></div>");
+          $(".section .range-container").parent().css("height","45vh");
+          $("#fDisplay").prop("readonly",true);
+        }
+        else{
+          $("#fontDisplay").css("height" , "35vh");
+          $("#fontDisplay .section1-title").remove();
+          $("#fDisplay").prop("readonly",false);
+        }
       },
       { passive: false }
     );
@@ -260,7 +290,7 @@ window.onload = () => {
   
     // font resizer js logic //
     const range = document.getElementById('range');
-  
+    console.log(style);
     range.addEventListener('input', (e) => {
       // Get the label (which is the nextElementSibling)
       const label = e.target.nextElementSibling;
@@ -285,16 +315,46 @@ window.onload = () => {
       // Calculate the left value
       const left = value * (num_width / max) - num_label_width / 2 + scale(value, min, max, 10, -10);
       
-      label.style.left = `${left-10}px`;
+      label.style.left = `${left+10}px`;
       label.innerHTML = value+" cm";
-        $("input").css("font-size" , value);
+      $("input").css("font-size" , value);
+
+      // changing the slider color and border
     });
     
     const scale = (num, in_min, in_max, out_min, out_max) => {
       return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
     }
     // end //
+   
     
+
+      // text movement with mouse
+var elem = document.querySelector('#fontDisplay'), 
+div = document.querySelector('#fDisplay'), 
+x = 0, 
+y = 0, 
+mousedown = false; 
+div.addEventListener('mousedown', function (e) { 
+// mouse state set to true 
+mousedown = true; 
+// subtract offset 
+x = div.offsetLeft - e.clientX; 
+y = div.offsetTop - e.clientY; 
+}, true); 
+
+div.addEventListener('mouseup', function (e) { 
+// mouse state set to false 
+mousedown = false; 
+}, true); 
+elem.addEventListener('mousemove', function (e) { 
+// Is mouse pressed 
+if (mousedown) { 
+// Now we calculate the difference upwards 
+div.style.left = e.clientX + x + 'px'; 
+div.style.top = e.clientY + y + 'px'; 
+} 
+}, true); 
   }
   
   
@@ -332,3 +392,5 @@ window.onload = () => {
       start++;
     }
   }
+
+
