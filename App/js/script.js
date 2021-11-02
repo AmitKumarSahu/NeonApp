@@ -9,7 +9,11 @@ window.onload = () => {
     let current = "embla";
     const rangeContainerClass = "range-container";
     let style = document.querySelector('[data="range-color"]');
-
+    //get the max size of text as per the window size
+    let maxWidth = getMaxWidth();
+    let minWidth = getMinWidth(maxWidth)
+    $('.range-container input').attr('max' , maxWidth);
+    $('.range-container input').attr('min' , minWidth);
     //on screen load 
     $('html,body').animate({
       scrollTop: $(".section .section1-title").parent().offset().top},
@@ -188,15 +192,27 @@ window.onload = () => {
       }
       current =  $slide.children("div:eq(1)").attr("class").split(" ")[0];
       if(current == rangeContainerClass){
+        $("#pDisplay").text($('#fDisplay').val());
+        $("#pDisplay").css('font-size' ,$('#fDisplay').css('font-size'));
+        $("#pDisplay").css('text-shadow' ,$('#fDisplay').css('text-shadow'));
+        $("#pDisplay").css('font-family' ,$('#fDisplay').css('font-family'));
+        $("#pDisplay").css('color' ,$('#fDisplay').css('color'));
+        $("#fDisplay").css("display","none");
+        attachTextMove();
         $("#fontDisplay").css("height" , "65vh");
         $("#fontDisplay").prepend("<div style='top: 50;position:fixed;' class='section1-title'><h2>What size would you like the sign to be?</h2></div>");
         $(".section .range-container").parent().css("height","45vh");
-        $("#fDisplay").prop("readonly",true);
+        setTimeout(function(){
+          $(".compare-image").removeClass("hide");
+          $(".compare-image").addClass("flex");
+        },500);
       }
       else{
+        $("#fDisplay").css("display","block");
         $("#fontDisplay").css("height" , "35vh");
         $("#fontDisplay .section1-title").remove();
-        $("#fDisplay").prop("readonly",false);
+        $(".compare-image").addClass("hide");
+        $(".compare-image").removeClass("flex");
       }
     }
     switch(e.which) {
@@ -272,15 +288,29 @@ window.onload = () => {
         }
         current =  $slide.children("div:eq(1)").attr("class").split(" ")[0];
         if(current == rangeContainerClass){
+          $("#pDisplay").text($('#fDisplay').val());
+          $("#pDisplay").css('font-size' ,$('#fDisplay').css('font-size'));
+          $("#pDisplay").css('text-shadow' ,$('#fDisplay').css('text-shadow'));
+          $("#pDisplay").css('font-family' ,$('#fDisplay').css('font-family'));
+          $("#pDisplay").css('color' ,$('#fDisplay').css('color'));
+          $("#fDisplay").css("display","none");
+          attachTextMove();
           $("#fontDisplay").css("height" , "65vh");
           $("#fontDisplay").prepend("<div style='top: 50;position:fixed;' class='section1-title'><h2>What size would you like the sign to be?</h2></div>");
           $(".section .range-container").parent().css("height","45vh");
           $("#fDisplay").prop("readonly",true);
+          setTimeout(function(){
+            $(".compare-image").removeClass("hide");
+            $(".compare-image").addClass("flex");
+          },500);
         }
         else{
+          $("#fDisplay").css("display","block");
           $("#fontDisplay").css("height" , "35vh");
           $("#fontDisplay .section1-title").remove();
           $("#fDisplay").prop("readonly",false);
+          $(".compare-image").addClass("hide");
+          $(".compare-image").removeClass("flex");
         }
       },
       { passive: false }
@@ -315,9 +345,11 @@ window.onload = () => {
       // Calculate the left value
       const left = value * (num_width / max) - num_label_width / 2 + scale(value, min, max, 10, -10);
       
+      //ratio value
+      let ratVal = 2500/maxWidth;
       label.style.left = `${left+10}px`;
-      label.innerHTML = value+" cm";
-      $("input").css("font-size" , value);
+      label.innerHTML = Math.floor(value*ratVal+5)+" cm";
+      $("#pDisplay").css("font-size" , value+25);  
 
       // changing the slider color and border
     });
@@ -325,13 +357,17 @@ window.onload = () => {
     const scale = (num, in_min, in_max, out_min, out_max) => {
       return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
     }
-    // end //
-   
-    
+    // end // 
 
-      // text movement with mouse
+$('input[type="range"]').on('click',function(){
+  $("#pDisplay").css({'top':'20%' , 'left':'20%'})
+})
+}
+  
+function attachTextMove(){
+        // text movement with mouse
 var elem = document.querySelector('#fontDisplay'), 
-div = document.querySelector('#fDisplay'), 
+div = document.querySelector('#pDisplay'), 
 x = 0, 
 y = 0, 
 mousedown = false; 
@@ -354,9 +390,8 @@ if (mousedown) {
 div.style.left = e.clientX + x + 'px'; 
 div.style.top = e.clientY + y + 'px'; 
 } 
-}, true); 
-  }
-  
+}, true);
+}
   
   function reformSlidesInViewArray(slideInView , emblaSlider){
     let start = emblaSlider.slidesNotInView();
@@ -392,5 +427,15 @@ div.style.top = e.clientY + y + 'px';
       start++;
     }
   }
+function getMaxWidth() {
+  let maxWindowSize = (window.innerWidth/735)*100;
+  let maxFontSize = maxWindowSize;
+  return maxFontSize;
+}
 
-
+function getMinWidth(maxWidth) {
+  //let ratVal = maxWidth/2500;
+  let maxWindowSize = (window.innerWidth/735)*100;
+  let minFontSize = (maxWindowSize*0.3)/100;
+  return minFontSize;
+}
